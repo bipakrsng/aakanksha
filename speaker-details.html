@@ -274,21 +274,58 @@ function formatMultiLineValue(value) {
                     <td>${teacherNames}</td>
                   </tr>
                   <tr>
-                    <th>Contact</th>
-                    <td>${contactInfo}</td>
-                  </tr>
-                  <tr>
-                    <th>Email</th>
-                    <td>${event["Email"] || "N/A"}</td>
-                  </tr>
-                  <tr>
-                    <th>Registration Link</th>
-                    <td>${
-                      event["link"]
-                        ? `<a href="${event["link"]}" target="_blank">Register Here</a>`
-                        : "N/A"
-                    }</td>
-                  </tr>
+  <th>Contact</th>
+  <td>
+    ${
+      contactInfo
+        ? `<a href="tel:${contactInfo}" title="Call">
+             <i class="fa fa-phone"></i> ||
+           </a>`
+        : ""
+    }
+    ${
+      event["Email"]
+        ? `<a href="mailto:${event["Email"]}" title="Email">
+             <i class="fa fa-envelope"></i> ||
+           </a>`
+        : ""
+    }
+    ${
+      contactInfo
+        ? `<a href="https://wa.me/${contactInfo}" title="WhatsApp" target="_blank">
+             <i class="fa fa-whatsapp"></i>
+           </a>`
+        : ""
+    }
+    ${
+      !contactInfo && !event["Email"]
+        ? "N/A"
+        : ""
+    }
+  </td>
+</tr>
+<tr>
+  <th>Links</th>
+  <td>
+    ${
+      event["glink"]
+        ? `<a href="${event["glink"]}" target="_blank" title="Register"> Click here for Register || </a>`
+        : ""
+    }
+    ${
+      event["rlink"]
+        ? `<a href="${event["rlink"]}" target="_blank" title="Rules">Rules of Event</a>`
+        : ""
+    }
+    ${
+      !event["glink"] && !event["rlink"]
+        ? "N/A"
+        : ""
+    }
+  </td>
+</tr>
+
+                  
                 </tbody>
               </table>
             </div>
