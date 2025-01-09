@@ -26,6 +26,102 @@
 
   <!-- Main Stylesheet File -->
   <link href="css/style.css" rel="stylesheet">
+  <style>
+  .notifications-wrapper {
+  background: #f9f9f9;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  height: 100%; /* Matches the height of the "About The Event" section */
+  max-height: 400px; /* Fix the max height to prevent abrupt expansion */
+  overflow: hidden; /* Ensure content doesn't spill outside the box */
+  display: flex;
+  flex-direction: column;
+}
+
+.notifications-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.notifications-content {
+  flex-grow: 1;
+  overflow-y: auto; /* Enable vertical scrolling within the fixed height */
+  position: relative;
+  padding-right: 10px; /* Add padding for scroll bar spacing */
+}
+
+.notification-item {
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  border-radius: 5px;
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.notification-item:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+.badge {
+  background: #007bff;
+  color: white;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  margin-right: 15px;
+}
+
+.notification-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.notification-title a {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.notification-title a:hover {
+  text-decoration: underline;
+}
+
+.notification-date {
+  font-size: 0.9rem;
+  color: #777;
+  margin-top: 5px;
+}
+
+/* Scrollbar Styling for Better UX */
+.notifications-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.notifications-content::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+
+.notifications-content::-webkit-scrollbar-thumb:hover {
+  background: #999;
+}
+
+
+  </style>
 </head>
 
 <body>
@@ -82,26 +178,28 @@
         <div class="row">
           <div class="col-lg-8">
             <h2>About The Event</h2>
-            <p><b>AAKANKSHA</b> is the annual youth festival of the <b>Institute of Science, Banaras Hindu University</b>, and it has been a cherished tradition for years. This vibrant event offers a much-needed break from the routine academic schedule, serving as a dynamic platform for students to showcase their extracurricular talents. Beyond entertainment, <b>AAKANKSHA</b> fosters social connections and encourages the exchange of innovative ideas and perspectives.
+            <p>
+              <b>AAKANKSHA</b> is the annual youth festival of the <b>Institute of Science, Banaras Hindu University</b>, and it has been a cherished tradition for years. This vibrant event offers a much-needed break from the routine academic schedule, serving as a dynamic platform for students to showcase their extracurricular talents. Beyond entertainment, <b>AAKANKSHA</b> fosters social connections and encourages the exchange of innovative ideas and perspectives.
               <br><br>
               More than just a fest, <b>AAKANKSHA</b> is a <b>celebration of student aspirations</b>. Coordinated entirely by a dedicated team of undergraduate and postgraduate students from the Institute of Science, this festival truly embodies the spirit of being <i>“Of the Students, By the Students, and For the Students!”</i>
               <br><br>
               With a staggering <b>49 diverse events</b>, <b>AAKANKSHA</b> stands as the largest festival of BHU, spanning genres like <b>Literature, Cinematics, Theatre, Music, Dance, and Fine Arts</b>, alongside exciting activities such as the <b>Mini Marathon, Treasure Hunt, Sudoku</b>, and a captivating <b>Science Exhibition</b>. Each year, the festival transforms with fresh colors, bringing new vibrancy to the campus.
               <br><br>
-              The festival season begins in <b>mid-January</b> and continues until the <b>second week of February</b>, culminating in a grand finale at the iconic <b>Swatantrata Bhawan, Banaras Hindu University</b>. <b>AAKANKSHA</b> is more than an event—it's a tradition, a celebration, and a testament to the boundless energy and creativity of the students of BHU.</p>
+              The festival season begins in <b>mid-January</b> and continues until the <b>second week of February</b>, culminating in a grand finale at the iconic <b>Swatantrata Bhawan, Banaras Hindu University</b>. <b>AAKANKSHA</b> is more than an event—it's a tradition, a celebration, and a testament to the boundless energy and creativity of the students of BHU.
+            </p>
           </div>
-          <div class="col-lg-2">
-            <h3>Where</h3>
-            <p>BHU,Varanasi</p>
-          </div>
-          <div class="col-lg-2">
-            <h3>When</h3>
-            <p>8 February </p>
+          <div class="col-lg-4 d-flex align-items-center">
+            <div id="notifications-container" class="notifications-wrapper">
+              <h3 class="notifications-title">Latest Notifications</h3>
+              <div class="notifications-content">
+                <!-- Notifications will be dynamically inserted here -->
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
-
+    
     <!--==========================
       Speakers Section
     ============================-->
@@ -700,6 +798,70 @@
 
   <!-- Template Main Javascript File -->
   <script src="js/main.js"></script>
+  <script>
+    // Fetch notifications from Google Sheets
+async function fetchNotifications() {
+  const apiKey = "AIzaSyCAsSaFX0M742NZy5IjRF0-Z9FkEv5R-NI";
+  const spreadsheetId = "1vHQl6V2ex5dlX8bSxBwDrZXO6VKClo-MnOE8w0X_yJA";
+  const range = "Notifications!A2:C"; // Adjust range to your sheet structure
+  const url = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}?key=${apiKey}`;
+
+  const response = await fetch(url);
+  const data = await response.json();
+  return data.values || [];
+}
+
+// Render notifications dynamically with auto-scroll
+async function renderNotifications() {
+  const notificationsContent = document.querySelector(".notifications-content");
+  const notifications = await fetchNotifications();
+
+  if (notifications.length === 0) {
+    notificationsContent.innerHTML = "<p>No notifications at the moment.</p>";
+    return;
+  }
+
+  // Reverse notifications to display the latest first
+  notifications.reverse();
+
+  const notificationsHTML = notifications.map((notification, index) => {
+    const [date, title, link] = notification;
+    return `
+      <div class="notification-item">
+        <span class="badge"></span>
+        <div class="notification-details">
+          <p class="notification-title">
+            <a href="${link}" target="_blank">${title}</a>
+          </p>
+          <p class="notification-date">${date}</p>
+        </div>
+      </div>
+    `;
+  }).join("");
+
+  notificationsContent.innerHTML = notificationsHTML;
+
+  // Auto-scroll functionality
+  let scrollPosition = 0;
+  const notificationHeight = notificationsContent.firstElementChild.offsetHeight;
+  setInterval(() => {
+    scrollPosition += notificationHeight;
+
+    if (scrollPosition >= notificationsContent.scrollHeight) {
+      scrollPosition = 0; // Reset scroll position to the top
+    }
+
+    notificationsContent.scrollTo({
+      top: scrollPosition,
+      behavior: "smooth",
+    });
+  }, 3000); // Scroll every 3 seconds
+}
+
+// Initialize notifications
+renderNotifications();
+
+  </script>
 </body>
 
 </html>

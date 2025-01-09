@@ -9,7 +9,7 @@
   <meta content="" name="description">
 
   <!-- Favicons -->
-  <link href="img/logo1.jpeg" rel="icon">
+  <link href="img/logo.png" rel="icon">
   <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
@@ -202,8 +202,10 @@
   });
 </script>
 <script>
-  // URL of the Google Sheet published as CSV
-  const sheetURL = "https://docs.google.com/spreadsheets/d/1vHQl6V2ex5dlX8bSxBwDrZXO6VKClo-MnOE8w0X_yJA/export?format=csv&gid=1635824922";
+  // Define the API key and spreadsheet details
+  const API_KEY = "AIzaSyCAsSaFX0M742NZy5IjRF0-Z9FkEv5R-NI"; // Replace with your actual API key
+  const SPREADSHEET_ID = "1vHQl6V2ex5dlX8bSxBwDrZXO6VKClo-MnOE8w0X_yJA";
+  const RANGE = "EventDetails"; // Replace with the actual sheet name or range
 
   // Function to get category from the URL
   function getCategoryFromURL() {
@@ -211,41 +213,37 @@
     return params.get("category"); // Extract "category" from "?category=<value>"
   }
 
-  // Fetch data from the Google Sheet
+  // Fetch data from the Google Sheets API
   async function fetchSheetData() {
-    const response = await fetch(sheetURL);
-    const csvText = await response.text();
-    console.log(csvText)
-    return parseCSV(csvText);
+    const url = `https://sheets.googleapis.com/v4/spreadsheets/${SPREADSHEET_ID}/values/${RANGE}?key=${API_KEY}`;
+    const response = await fetch(url);
+    const data = await response.json();
+    return parseSheetData(data);
   }
 
-  // Parse CSV data into JSON
-  function parseCSV(csvText) {
-    const rows = csvText.split("\n").map(row => row.split(","));
-    const headers = rows[0]; // First row contains headers
-    const data = rows.slice(1).map(row =>
-      row.reduce((acc, val, i) => {
-        acc[headers[i].trim()] = val.trim();
+  // Parse Google Sheets API data into JSON
+  function parseSheetData(apiResponse) {
+    const headers = apiResponse.values[0];
+    const rows = apiResponse.values.slice(1);
+    return rows.map(row =>
+      row.reduce((acc, value, index) => {
+        acc[headers[index].trim()] = value.trim();
         return acc;
       }, {})
     );
-    return data;
   }
 
- // Format multi-line values by splitting them and adding <br> for line breaks
-function formatMultiLineValue(value) {
-  if (value && value.trim()) {
-    return value.split(/\r?\n/).map(line => line.trim()).join("<br>");
+  // Format multi-line values by splitting them and adding <br> for line breaks
+  function formatMultiLineValue(value) {
+    if (value && value.trim()) {
+      return value.split(/\r?\n/).map(line => line.trim()).join("<br>");
+    }
+    return "N/A";
   }
-  return "N/A";
-}
-
 
   // Generate a dynamic section for an event
   function generateEventSection(event) {
     const eventImage = getEventImageURL(event["Event"]);
-
-    // Format multi-line fields (e.g., Teacher names, Volunteer names)
     const teacherNames = formatMultiLineValue(event["Teacher"]);
     const volunteerNames = formatMultiLineValue(event["Volunteer"]);
     const contactInfo = formatMultiLineValue(event["Contact"]);
@@ -257,86 +255,39 @@ function formatMultiLineValue(value) {
             <h2>${event["Event"]}</h2>
           </div>
           <div class="row">
-            <!-- Image Section -->
             <div class="col-md-6">
               <img src="${eventImage}" alt="${event["Event"]} Image" class="img-fluid">
             </div>
-            <!-- Info Table Section -->
             <div class="col-md-6">
               <table class="table table-striped">
                 <tbody>
                   <tr>
-                    <th>Date</th>
-                    <td>${event["Dateofevent"]}</td>
+                    <th>Links</th>
+                    <td>
+                      ${event["glink"] ? `<a href="${event["glink"]}" target="_blank" title="Register">Click here for Register || </a>` : ""}
+                      ${event["rlink"] ? `<a href="${event["rlink"]}" target="_blank" title="Rules"> Rules of Event</a>` : ""}
+                      ${!event["glink"] && !event["rlink"] ? "N/A" : ""}
+                    </td>
                   </tr>
                   <tr>
-                    <th>Timing</th>
-                    <td>${event["Timing"]}</td>
-                  </tr>
+                    <th>Date & Time</th>
+                    <td>
+                        ${event["Dateofevent"] || "N/A"} ${event["Timing"] ? `at ${event["Timing"]}` : ""}
+                        </td>
+                      </tr>
                   <tr>
+                    <tr><th>Venue</th><td>${event["Venue"] || "N/A"}</td></tr>
+                    <th>Core Volunteer</th><td>${volunteerNames}</td></tr>
+                  <tr><th>Teacher(s)</th><td>${teacherNames}</td></tr>
                   <tr>
-                    <th>Venue</th>
-                    <td>${event["Venue"]}</td>
+                    <th>Contact</th>
+                    <td>
+                      ${contactInfo ? `<a href="tel:${contactInfo}" title="Call"><i class="fa fa-phone"></i> || </a>` : ""}
+                      ${event["Email"] ? `<a href="mailto:${event["Email"]}" title="Email"><i class="fa fa-envelope"></i> || </a>` : ""}
+                      ${contactInfo ? `<a href="https://wa.me/${contactInfo}" title="WhatsApp" target="_blank"><i class="fa fa-whatsapp"></i></a>` : ""}
+                      ${!contactInfo && !event["Email"] ? "N/A" : ""}
+                    </td>
                   </tr>
-                    <th>Core Volunteer</th>
-                    <td>${volunteerNames}</td>
-                  </tr>
-                  <tr>
-                    <th>Teacher(s)</th>
-                    <td>${teacherNames}</td>
-                  </tr>
-                  <tr>
-  <th>Contact</th>
-  <td>
-    ${
-      contactInfo
-        ? `<a href="tel:${contactInfo}" title="Call">
-             <i class="fa fa-phone"></i> ||
-           </a>`
-        : ""
-    }
-    ${
-      event["Email"]
-        ? `<a href="mailto:${event["Email"]}" title="Email">
-             <i class="fa fa-envelope"></i> ||
-           </a>`
-        : ""
-    }
-    ${
-      contactInfo
-        ? `<a href="https://wa.me/${contactInfo}" title="WhatsApp" target="_blank">
-             <i class="fa fa-whatsapp"></i>
-           </a>`
-        : ""
-    }
-    ${
-      !contactInfo && !event["Email"]
-        ? "N/A"
-        : ""
-    }
-  </td>
-</tr>
-<tr>
-  <th>Links</th>
-  <td>
-    ${
-      event["glink"]
-        ? `<a href="${event["glink"]}" target="_blank" title="Register"> Click here for Register || </a>`
-        : ""
-    }
-    ${
-      event["rlink"]
-        ? `<a href="${event["rlink"]}" target="_blank" title="Rules">Rules of Event</a>`
-        : ""
-    }
-    ${
-      !event["glink"] && !event["rlink"]
-        ? "N/A"
-        : ""
-    }
-  </td>
-</tr>
-
                   
                 </tbody>
               </table>
@@ -351,15 +302,12 @@ function formatMultiLineValue(value) {
   function getEventImageURL(eventName) {
     const basePath = "img/speakers/";
     const extensions = [".png", ".jpg", ".jpeg"];
-    
-    // Try each extension
     for (let ext of extensions) {
       const imagePath = `${basePath}${eventName}${ext}`;
       if (imageExists(imagePath)) {
         return imagePath;
       }
     }
-    // Fallback to a default image if none match
     return `${basePath}default.jpg`;
   }
 
@@ -367,9 +315,8 @@ function formatMultiLineValue(value) {
   async function imageExists(url) {
     try {
       const response = await fetch(url, { method: "HEAD" });
-      return response.ok; // Returns true if status is 200
-    } catch (error) {
-      console.error(`Error checking image URL: ${url}`, error);
+      return response.ok;
+    } catch {
       return false;
     }
   }
@@ -378,19 +325,15 @@ function formatMultiLineValue(value) {
   async function renderSections() {
     const category = getCategoryFromURL();
     const data = await fetchSheetData();
-
     const container = document.getElementById("event-sections-container");
     container.innerHTML = ""; // Clear previous content
 
-    // Filter events by category
     const filteredEvents = data.filter(event => event["Categories"] === category);
-
     if (filteredEvents.length === 0) {
       container.innerHTML = `<p>No events found for category: ${category}</p>`;
       return;
     }
 
-    // Create and append sections for each event
     for (const event of filteredEvents) {
       const sectionHTML = generateEventSection(event);
       container.innerHTML += sectionHTML;
