@@ -7,9 +7,19 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta content="" name="keywords">
   <meta content="" name="description">
+  <meta name="title" content="Aakanksha 2025 - College Fest of Institute of Science BHU">
+  <meta name="description" content="Join Aakanksha 2025, the grand college fest of the Institute of Science, BHU. Participate in exciting events like dance, music, slow cycling, treasure hunt, and more!">
+  <meta name="keywords" content="Aakanksha 2025, ISC BHU, Institute of Science BHU, BHU college fest, dance events, music events, treasure hunt, slow cycling, BHU fest 2025">
+  <meta name="author" content="Abhinay Narayan Singh">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+  <meta name="og:title" content="Aakanksha 2025 - College Fest of Institute of Science BHU">
+  <meta name="og:description" content="Discover Aakanksha 2025, the vibrant college fest of ISC BHU with events like dance, music, slow cycling, treasure hunt, and more.">
+  <meta name="og:url" content="https://aakanksha.org/">
+  <meta name="og:type" content="website">
 
   <!-- Favicons -->
-  <link href="img/logo1.jpeg" rel="icon">
+  <link href="img/logo.png" rel="icon">
   <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
@@ -119,9 +129,30 @@
 .notifications-content::-webkit-scrollbar-thumb:hover {
   background: #999;
 }
+@keyframes pop-up {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
 
+.pop-up {
+  animation: pop-up 1s infinite;
+}
+@keyframes pop-up {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
 
-  </style>
+.highlighted-pop-up {
+  color: red;
+  font-weight: bold;
+  animation: pop-up 1s infinite;
+  background-color: #eb525f;
+  padding: 10px;
+  border-radius: 5px;
+}
+</style>
 </head>
 
 <body>
@@ -135,14 +166,14 @@
       <div id="logo" class="pull-left">
         <!-- Uncomment below if you prefer to use a text logo -->
         <!-- <h1><a href="#main">C<span>o</span>nf</a></h1>-->
-        <a href="#intro" class="scrollto"><img src="img/logo.png" alt="" title=""></a>
+        <a href="#intro" class="scrollto"><img src="img/logo.png" alt="" title="" width="500px" height="500px"></a>
       </div>
 
       <nav id="nav-menu-container">
         <ul class="nav-menu">
-          <li class="menu-active"><a href="#intro">Home</a></li>
+          <li class="menu-active"><a href="index.html#intro">Home</a></li>
           <li><a href="#about">About</a></li>
-          <li><a href="#speakers">Event</a></li>
+          <li><a href="#speakers">Event Registration</a></li>
           <li><a href="#schedule">Schedule</a></li>
           <li><a href="#venue">Venue</a></li>
           <li><a href="team.html">Team </a></li>
@@ -165,8 +196,15 @@
       <p class="mb-4 pb-0">8 February, Banaras Hindu University, Varanasi</p>
       <a href="https://youtu.be/67PHero8nto?si=40sotA3af2_hbK4f" class="venobox play-btn mb-4" data-vbtype="video"
         data-autoplay="true"></a>
-      <a href="#about" class="about-btn scrollto">About The Event</a>
+      <a href="#speakers" class="about-btn scrollto">Register NOW</a>
     </div>
+
+    <!-- <div id="intro">
+      <video autoplay loop muted>
+        <source src="img\Untitleddesign.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div> -->
   </section>
 
   <main id="main">
@@ -210,7 +248,7 @@
         <div class="section-header">
           <h2>Events </h2>
           <p>Here are all  the Events  </p>
-          <p>Click on event for details </p>
+          <p class="highlighted-pop-up" style="color:white">Click on event for details </p>
         </div>
 
         <div class="row">
@@ -321,7 +359,7 @@
             
 
             <div class="row schedule-item">
-              <div class="col-md-2"><time> <b>20 January</b></time></div>
+              <div class="col-md-2"><time> <b>20 January <a href="https://forms.gle/Y62Poqqs2GdJTswb8" class="btn btn-danger btn-sm pop-up">Register now</a></b></time></div>
               <div class="col-md-10">
                 <div class="speaker">
                   <img src="img\speakers\essay.png" alt="Brenden Legros">
@@ -697,7 +735,7 @@
               <i class="ion-ios-email-outline"></i>
               <h3>Email</h3>
               <p><a href="mailto:studentadvisor.isc@bhu.ac.in">Student Advisor</a></p>
-              <p><a href="mailto:bipulkumarsng@gmail.com">Volunteer</a></p>
+              
             </div>
           </div>
 
@@ -803,7 +841,7 @@
   <script>
     // Fetch notifications from Google Sheets
 async function fetchNotifications() {
-  const apiKey = "AIzaSyCAsSaFX0M742NZy5IjRF0-Z9FkEv5R-NI";
+  const apiKey = "AIzaSyBtR77cP_cv03h6DtKdntwSrxv5SjNWpeA";
   const spreadsheetId = "1vHQl6V2ex5dlX8bSxBwDrZXO6VKClo-MnOE8w0X_yJA";
   const range = "Notifications!A2:C"; // Adjust range to your sheet structure
   const url = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}?key=${apiKey}`;

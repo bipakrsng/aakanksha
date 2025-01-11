@@ -88,7 +88,7 @@
 
       <nav id="nav-menu-container">
         <ul class="nav-menu">
-          <li class="menu-active"><a href="#intro">Home</a></li>
+          <li class="menu-active"><a href="index.html#intro">Home</a></li>
           <li><a href="index.html#about">About</a></li>
           <li><a href="index.html#speakers">Event</a></li>
           <li><a href="index.html#schedule">Schedule</a></li>
@@ -203,7 +203,7 @@
 </script>
 <script>
   // Define the API key and spreadsheet details
-  const API_KEY = "AIzaSyCAsSaFX0M742NZy5IjRF0-Z9FkEv5R-NI"; // Replace with your actual API key
+  const API_KEY = "AIzaSyBtR77cP_cv03h6DtKdntwSrxv5SjNWpeA"; // Replace with your actual API key
   const SPREADSHEET_ID = "1vHQl6V2ex5dlX8bSxBwDrZXO6VKClo-MnOE8w0X_yJA";
   const RANGE = "EventDetails"; // Replace with the actual sheet name or range
 
@@ -216,9 +216,17 @@
   // Fetch data from the Google Sheets API
   async function fetchSheetData() {
     const url = `https://sheets.googleapis.com/v4/spreadsheets/${SPREADSHEET_ID}/values/${RANGE}?key=${API_KEY}`;
-    const response = await fetch(url);
-    const data = await response.json();
-    return parseSheetData(data);
+    try {
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const data = await response.json();
+      return parseSheetData(data);
+    } catch (error) {
+      showContactDetails();
+      throw error;
+    }
   }
 
   // Parse Google Sheets API data into JSON
@@ -324,26 +332,55 @@
   // Render sections dynamically based on the category
   async function renderSections() {
     const category = getCategoryFromURL();
-    const data = await fetchSheetData();
+    try {
+      const data = await fetchSheetData();
+      const container = document.getElementById("event-sections-container");
+      container.innerHTML = ""; // Clear previous content
+
+      const filteredEvents = data.filter(event => event["Categories"] === category);
+      if (filteredEvents.length === 0) {
+        container.innerHTML = `<p>No events found for category: ${category}</p>`;
+        return;
+      }
+
+      for (const event of filteredEvents) {
+        const sectionHTML = generateEventSection(event);
+        container.innerHTML += sectionHTML;
+      }
+    } catch (error) {
+      console.error('Error fetching or rendering data:', error);
+    }
+  }
+
+  // Show contact details in case of an error
+  function showContactDetails() {
     const container = document.getElementById("event-sections-container");
-    container.innerHTML = ""; // Clear previous content
-
-    const filteredEvents = data.filter(event => event["Categories"] === category);
-    if (filteredEvents.length === 0) {
-      container.innerHTML = `<p>No events found for category: ${category}</p>`;
-      return;
-    }
-
-    for (const event of filteredEvents) {
-      const sectionHTML = generateEventSection(event);
-      container.innerHTML += sectionHTML;
-    }
+    container.innerHTML = `
+      <section id="contact-details" class="wow fadeIn">
+        <div class="container">
+          <div class="section-header">
+            <h2>Contact Us</h2>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <p><b>If you don't see the event details,please wait for 2 min and retry <br>
+                OR, can try to register from our schedule section : <a href="index.html#schedule">Click here</a><br>
+                
+                
+              Else you can contact us on.<b></p>
+              
+              <p>Phone: <a href="tel:+919650546261">9650546261</a></p>
+              <p>Email: <a href="mailto:bipulkrsng@bhu.ac.in">bipulkrsng@bhu.ac.in</a></p>
+            </div>
+          </div>
+        </div>
+      </section>
+    `;
   }
 
   // Initialize rendering
   renderSections();
 </script>
-
 
 
 
