@@ -4,13 +4,10 @@
 <head>
   <meta charset="utf-8">
   <title>AAKANKSHA</title>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <meta content="" name="keywords">
-  <meta content="" name="description">
   <meta name="title" content="Aakanksha 2025 - College Fest of Institute of Science BHU">
   <meta name="description" content="Join Aakanksha 2025, the grand college fest of the Institute of Science, BHU. Participate in exciting events like dance, music, slow cycling, treasure hunt, and more!">
   <meta name="keywords" content="Aakanksha 2025, ISC BHU, Institute of Science BHU, BHU college fest, dance events, music events, treasure hunt, slow cycling, BHU fest 2025">
-  <meta name="author" content="Abhinay Narayan Singh">
+  <meta name="author" content="Bipul Kumar Singh">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="index, follow">
   <meta name="og:title" content="Aakanksha 2025 - College Fest of Institute of Science BHU">
@@ -20,7 +17,7 @@
 
   <!-- Favicons -->
   <link href="img/logo.png" rel="icon">
-  <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="img/logo.png" rel="logo">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800" rel="stylesheet">
@@ -152,6 +149,261 @@
   padding: 10px;
   border-radius: 5px;
 }
+
+/* about css */
+#about {
+  background-color: #232323;
+  color: #fff;
+  font-family: Calibri, sans-serif;
+}
+
+#text {
+  font-size: 18px;
+  text-align: justify;
+}
+
+.char {
+  font-size: 18px;
+  animation: an 1s ease-out 1 both;
+  display: inline-block;
+}
+
+@keyframes an {
+  from {
+    opacity: 0;
+    transform: perspective(500px) translate3d(-35px, -40px, -150px) rotate3d(1, -1, 0, 35deg);
+  }
+  to {
+    opacity: 1;
+    transform: perspective(500px) translate3d(0, 0, 0);
+  }
+}
+
+/* aakanksha broucher */
+
+/* Variables */
+/* Basic setup for the page */
+/* "AAKANKSHA BROCHURE" animated text effect */
+/* Center alignment for the section */
+.section-header {
+  text-align: center;
+  /* Center vertically */
+}
+
+/* Animated text container */
+.animated-container {
+  display: inline-flex; /* Keep "AAKANKSHA" and "BROCHURE" inline */
+  align-items: center;
+  gap: 2px; /* Reduced space between "AAKANKSHA" and "BROCHURE" */
+  font-weight: bold;
+  font-size: 2rem;
+  overflow: hidden; /* Preserve animations */
+  white-space: nowrap;
+}
+
+/* AAKANKSHA text styling */
+.aakanksha {
+  color: #670d05; /* Different color for AAKANKSHA */
+  animation: showup 7s infinite;
+  margin: 0; /* Ensure no extra margin */
+}
+
+/* BROCHURE text styling */
+.brochure {
+  color: #2b7a78; /* Different color for BROCHURE */
+  width: 0px; /* Initial width for animation */
+  animation: reveal 7s infinite;
+  margin: 0; /* Ensure no extra margin */
+}
+
+.brochure span {
+  margin-left: -200px; /* Reduced sliding offset for smoother animation */
+  animation: slidein 7s infinite;
+}
+
+/* Keyframes for animations */
+@keyframes showup {
+  0% { opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes slidein {
+  0% { margin-left: -400px; } /* Reduced sliding distance */
+  20% { margin-left: -400px; }
+  35% { margin-left: 0px; }
+  100% { margin-left: 0px; }
+}
+
+@keyframes reveal {
+  0% { opacity: 0; width: 0px; }
+  20% { opacity: 1; width: 0px; }
+  30% { width: 200px; } /* Adjusted width for smoother animation */
+  80% { opacity: 1; }
+  100% { opacity: 0; width: 200px; }
+}
+
+/* Styling for the AAKANKSHA BROCHURE link */
+.brochure-link {
+  font-size: 1.5rem;
+  margin-top: 15px;
+  text-align: center;
+}
+
+.brochure-link a {
+  text-decoration: none;
+  color: #000; /* Black for link text */
+  font-weight: bold;
+}
+
+.highlighted-pop-up {
+  color: #444; /* Neutral color for additional text */
+  font-size: 18px;
+  margin-top: 10px;
+  letter-spacing: 0.2px;
+}
+
+/* intro css */
+/* General body styling */
+
+/* Intro section container */
+#intro {
+  position: relative;
+  text-align: center;
+  color: #4db1bc;
+  overflow: hidden;
+}
+
+#intro img {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  opacity: 0.7;
+  z-index: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* Title animation */
+#intro h1 {
+  margin: 0;
+  padding-bottom: 6rem;
+  z-index: 1;
+  position: relative;
+  font-family: 'Teko', sans-serif;
+  font-size: 10rem;
+  text-transform: uppercase;
+  animation: glow 2s ease-in-out infinite alternate;
+  text-align: center;
+}
+
+#intro h1 span {
+  display: inline-block;
+}
+
+/* Paragraph styling */
+#intro p {
+  margin-top: 20px;
+  z-index: 1;
+  position: relative;
+}
+
+/* Link button styling */
+#intro a {
+  font-family: 'Teko', sans-serif;
+  color: #4db1bc;
+  z-index: 1;
+  position: relative;
+  padding: 10px 20px;
+  background-color: #333;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  border-radius: 5px;
+}
+
+/* Glow effect for the text */
+@keyframes glow {
+  from {
+    text-shadow: 0 0 20px #2d9da9;
+  }
+  to {
+    text-shadow: 0 0 30px #34b3c1, 0 0 10px #4dbbc7;
+  }
+}
+
+/* Media Queries for responsiveness */
+@media only screen and (max-width: 1200px) {
+  #intro h1 {
+    font-size: 8rem; /* Smaller font size for large screens */
+  }
+  #intro p {
+    font-size: 1.5rem; /* Adjust paragraph size */
+  }
+  #intro a {
+    font-size: 1rem; /* Adjust button text size */
+    padding: 8px 18px;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  #intro h1 {
+    font-size: 6rem; /* Further reduce font size for medium screens */
+    padding-bottom: 4rem; /* Adjust padding */
+  }
+  #intro p {
+    font-size: 1.3rem;
+  }
+  #intro a {
+    font-size: 0.9rem; /* Smaller button text */
+    padding: 8px 16px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  #intro h1 {
+    font-size: 5rem; /* Reduce font size for smaller screens */
+    padding-bottom: 3rem;
+  }
+  #intro p {
+    font-size: 1.2rem;
+  }
+  #intro a {
+    font-size: 0.8rem; /* Smaller button text */
+    padding: 6px 14px;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  #intro h1 {
+    font-size: 4rem; /* Even smaller font size for very small screens */
+    padding-bottom: 2rem;
+  }
+  #intro p {
+    font-size: 1.1rem;
+  }
+  #intro a {
+    font-size: 0.8rem;
+    padding: 6px 12px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  #intro h1 {
+    font-size: 3rem; /* Significantly smaller font for very small devices */
+    padding-bottom: 1.5rem;
+  }
+  #intro p {
+    font-size: 1rem;
+  }
+  #intro a {
+    font-size: 0.75rem; /* Very small button text */
+    padding: 5px 10px;
+  }
+}
+
 </style>
 </head>
 
@@ -192,13 +444,21 @@
   ============================-->
   <section id="intro">
     <div class="intro-container wow fadeIn">
-      <h1 class="mb-4 pb-0">AAKANkSHa<br><span>Inter Youth fest</span></h1>
+      <h1>
+        <span class="one">AAKANKSHA</span> 
+        <!-- <span class="two">A</span><span class="three">K</span><span class="four">ANKSHA</span> -->
+      <!-- <span class="six">K</span><span class="seven">S</span><span class="eight">H</span>
+        <span class="nine">A</span> -->
+      </h1>
       <p class="mb-4 pb-0">8 February, Banaras Hindu University, Varanasi</p>
       <a href="https://youtu.be/67PHero8nto?si=40sotA3af2_hbK4f" class="venobox play-btn mb-4" data-vbtype="video"
         data-autoplay="true"></a>
       <a href="#speakers" class="about-btn scrollto">Register NOW</a>
+      <!-- <img src="" alt="Background Image"> -->
+      
     </div>
-
+  </section>
+  
     <!-- <div id="intro">
       <video autoplay loop muted>
         <source src="img\Untitleddesign.mp4" type="video/mp4">
@@ -216,13 +476,13 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-8">
-            <h2>About The Event</h2>
-            <p>
+            <h2 id="animated-text">About The Event</h2>
+            <p id="text">
               <b>AAKANKSHA</b> is the annual youth festival of the <b>Institute of Science, Banaras Hindu University</b>, and it has been a cherished tradition for years. This vibrant event offers a much-needed break from the routine academic schedule, serving as a dynamic platform for students to showcase their extracurricular talents. Beyond entertainment, <b>AAKANKSHA</b> fosters social connections and encourages the exchange of innovative ideas and perspectives.
               <br><br>
               More than just a fest, <b>AAKANKSHA</b> is a <b>celebration of student aspirations</b>. Coordinated entirely by a dedicated team of undergraduate and postgraduate students from the Institute of Science, this festival truly embodies the spirit of being <i>“Of the Students, By the Students, and For the Students!”</i>
               <br><br>
-              With a staggering <b>49 diverse events</b>, <b>AAKANKSHA</b> stands as the largest festival of BHU, spanning genres like <b>Literature, Cinematics, Theatre, Music, Dance, and Fine Arts</b>, alongside exciting activities such as the <b>Mini Marathon, Treasure Hunt, Sudoku</b>, and a captivating <b>Science Exhibition</b>. Each year, the festival transforms with fresh colors, bringing new vibrancy to the campus.
+              With a staggering <b>38 diverse events</b>, <b>AAKANKSHA</b> stands as the largest festival of BHU, spanning genres like <b>Literature, Cinematics, Theatre, Music, Dance, and Fine Arts</b>, alongside exciting activities such as the <b>Mini Marathon, Treasure Hunt, Sudoku</b>, and a captivating <b>Science Exhibition</b>. Each year, the festival transforms with fresh colors, bringing new vibrancy to the campus.
               <br><br>
               The festival season begins in <b>mid-January</b> and continues until the <b>second week of February</b>, culminating in a grand finale at the iconic <b>Swatantrata Bhawan, Banaras Hindu University</b>. <b>AAKANKSHA</b> is more than an event—it's a tradition, a celebration, and a testament to the boundless energy and creativity of the students of BHU.
             </p>
@@ -231,7 +491,6 @@
             <div id="notifications-container" class="notifications-wrapper">
               <h3 class="notifications-title" style="color:black"><b>Latest Notifications</b></h3>
               <div class="notifications-content">
-                
                 <!-- Notifications will be dynamically inserted here -->
               </div>
             </div>
@@ -247,8 +506,14 @@
       <div class="container">
         <div class="section-header">
           <h2>Events </h2>
-          <p><a href="https://drive.google.com/file/d/13S_HEZMQUwmjaSbtKhqf1S93oH6Ff_32/view">AAKANKSHA BROCHURE</a></p>
-          <p class="highlighted-pop-up" style="color:white">Click on event for details </p>
+          
+          <a href="https://drive.google.com/file/d/13S_HEZMQUwmjaSbtKhqf1S93oH6Ff_32/view"><div class="animated-container">
+            <div class="animated-text aakanksha">AAKANKSHA</div>
+            <div class="animated-text brochure">
+              <span>BROCHURE</span>
+            </div>
+          </div></a>
+          <p id="event-details" >Click on event for details </p>
         </div>
 
         <div class="row">
@@ -336,7 +601,7 @@
           <h2>Events Schedule</h2>
           <p>Here is our event schedule</p>
         </div>
-
+    
         <ul class="nav nav-tabs" role="tablist">
           <li class="nav-item">
             <a class="nav-link active" href="#day-1" role="tab" data-toggle="tab">Phase 1</a>
@@ -348,29 +613,27 @@
             <a class="nav-link" href="#day-3" role="tab" data-toggle="tab">Phase 3</a>
           </li>
         </ul>
-
+    
         <h3 class="sub-heading">Stay on track and never miss a moment! Our carefully curated event schedule ensures you make the most of every activity. From competitions to performances, find all the details of what's happening, when, and where. Plan your day and be part of the excitement!</h3>
-
+    
         <div class="tab-content row justify-content-center">
-
-          <!-- Schdule Day 1 -->
+    
+          <!-- Schedule Day 1 -->
           <div role="tabpanel" class="col-lg-9 tab-pane fade show active" id="day-1">
-
-            
-
+    
             <div class="row schedule-item">
-              <div class="col-md-2"><time> <b>20 January <a href="https://forms.gle/Y62Poqqs2GdJTswb8" class="btn btn-danger btn-sm pop-up">Register now</a></b></time></div>
+              <div class="col-md-2"><time> <b>20 January <a href="https://forms.gle/Y62Poqqs2GdJTswb8" class="register-btn btn btn-danger btn-sm pop-up" style="padding: 2px 5px; font-size: 12px;">Register now</a></b></time></div>
               <div class="col-md-10">
                 <div class="speaker">
-                  <img src="img\speakers\essay.png" alt="Brenden Legros">
+                  <img src="img/speakers/essay.png" alt="Brenden Legros">
                 </div>
                 <h4>Essay Writing</h4>
                 <p>Unleash your thoughts and pen down compelling essays in Hindi, English, and Sanskrit to showcase your linguistic flair and creativity.</p>
               </div>
             </div>
-
+    
             <div class="row schedule-item">
-              <div class="col-md-2"><time><b>21 January</b></time></div>
+              <div class="col-md-2"><time><b>21 January <a href="https://forms.gle/nDuHtxf3U7iUHWqZ6" class="register-btn btn btn-danger btn-sm pop-up" style="padding: 2px 5px; font-size: 12px;">Register now</a></b></time></div>
               <div class="col-md-10">
                 <div class="speaker">
                   <img src="img/speakers/On the Sport Painting.png" alt="On the Spot Painting">
@@ -379,9 +642,9 @@
                 <p>Let your imagination come alive on canvas! Join this live painting competition and watch art take shape in vibrant colors.</p>
               </div>
             </div>
-
+    
             <div class="row schedule-item">
-              <div class="col-md-2"><time><b>21 January</b></time></div>
+              <div class="col-md-2"><time><b>21 January <a href="https://forms.gle/nDuHtxf3U7iUHWqZ6" class="register-btn btn btn-danger btn-sm pop-up" style="padding: 2px 5px; font-size: 12px;">Register now</a></b></time></div>
               <div class="col-md-10">
                 <div class="speaker">
                   <img src="img/speakers/sketching.png" alt="Sketching">
@@ -390,9 +653,9 @@
                 <p>Express your artistic vision with just a pencil and paper. Witness raw talent and intricate sketches come to life.</p>
               </div>
             </div>
-
+    
             <div class="row schedule-item">
-              <div class="col-md-2"><time><b>22 January</b></time></div>
+              <div class="col-md-2"><time><b>22 January <a href="https://forms.gle/NkAmgJ8etqrdyand8" class="register-btn btn btn-danger btn-sm pop-up" style="padding: 2px 5px; font-size: 12px;">Register now</a></b></time></div>
               <div class="col-md-10">
                 <div class="speaker">
                   <img src="img/speakers/elocution.png" alt="Elocution">
@@ -401,9 +664,9 @@
                 <p>Hear participants captivate the audience with eloquent speeches and quick-witted extempore in Hindi, English, and Sanskrit.</p>
               </div>
             </div>
-
+    
             <div class="row schedule-item">
-              <div class="col-md-2"><time><b>23 January</b></time></div>
+              <div class="col-md-2"><time><b>23 January <a href="https://forms.gle/39THNNtTojNQKdct6" class="register-btn btn btn-danger btn-sm pop-up" style="padding: 2px 5px; font-size: 12px;">Register now</a></b></time></div>
               <div class="col-md-10">
                 <div class="speaker">
                   <img src="img/speakers/instrument.png" alt="Alejandrin Littel">
@@ -412,9 +675,9 @@
                 <p>Feel the rhythm and melody as musicians create magic with their instruments in solo and group performances.</p>
               </div>
             </div>
-
+    
             <div class="row schedule-item">
-              <div class="col-md-2"><time><b>24 January</b></time></div>
+              <div class="col-md-2"><time><b>24 January <a href="https://docs.google.com/forms/d/e/1FAIpQLSewvaGCpaYrWA2WaQSaLgacj38G3MtOLY_rZ1Gbqyg1rWBziw/viewform" class="register-btn btn btn-danger btn-sm pop-up" style="padding: 2px 5px; font-size: 12px;">Register now</a></b></time></div>
               <div class="col-md-10">
                 <div class="speaker">
                   <img src="img/speakers/Short Story Writing.png" alt="Willow Trantow">
@@ -423,15 +686,15 @@
                 <p>Dive into a world of imagination and storytelling. Watch creativity unfold as writers craft captivating tales.</p>
               </div>
             </div>
-
+    
           </div>
-          <!-- End Schdule Day 1 -->
-
-          <!-- Schdule Day 2 -->
-          <div role="tabpanel" class="col-lg-9  tab-pane fade" id="day-2">
-
+          <!-- End Schedule Day 1 -->
+    
+          <!-- Schedule Day 2 -->
+          <div role="tabpanel" class="col-lg-9 tab-pane fade" id="day-2">
+    
             <div class="row schedule-item">
-              <div class="col-md-2"><time><b>25 January</b></time></div>
+              <div class="col-md-2"><time><b>25 January <a href="https://docs.google.com/forms/d/e/1FAIpQLScaafrxAg7MxWSO6ekm0ZkF-OsRbGBw9svtqOkkhtlniBqY9w/viewform" class="register-btn btn btn-danger btn-sm pop-up" style="padding: 2px 5px; font-size: 12px;">Register now</a></b></time></div>
               <div class="col-md-10">
                 <div class="speaker">
                   <img src="img/speakers/poetry.png" alt="Brenden Legros">
@@ -440,9 +703,9 @@
                 <p>Immerse yourself in a lyrical journey with heartfelt poetry in Hindi, English, and Sanskrit that touches every emotion.</p>
               </div>
             </div>
-
+    
             <div class="row schedule-item">
-              <div class="col-md-2"><time><b>27 January</b></time></div>
+              <div class="col-md-2"><time><b>27 January <a href="https://docs.google.com/forms/d/e/1FAIpQLSdPMxO5yldzI64cLkn4T_6QqOrIDNeudSbibHj72ORaNYbm3A/viewform" class="register-btn btn btn-danger btn-sm pop-up" style="padding: 2px 5px; font-size: 12px;">Register now</a></b></time></div>
               <div class="col-md-10">
                 <div class="speaker">
                   <img src="img/speakers/2.jpg" alt="Hubert Hirthe">
@@ -451,9 +714,9 @@
                 <p>Experience the rhythm of life as performers captivate with vibrant solo, group, folk, classical, and Bollywood dances. Feel the beats, energy, and passion!</p>
               </div>
             </div>
-
+    
             <div class="row schedule-item">
-              <div class="col-md-2"><time><b>28 January</b></time></div>
+              <div class="col-md-2"><time><b>28 January <a href="https://docs.google.com/forms/d/e/1FAIpQLScegL0YwhVkxT46XYjrqQlHG63pSrq1moteKUPWSZVetFFuwA/viewform" class="register-btn btn btn-danger btn-sm pop-up" style="padding: 2px 5px; font-size: 12px;">Register now</a></b></time></div>
               <div class="col-md-10">
                 <div class="speaker">
                   <img src="img/speakers/turncoat.png" alt="Cole Emmerich">
@@ -462,9 +725,9 @@
                 <p>Get ready for an exciting debating twist! Watch participants switch sides mid-argument, blending wit and quick thinking.</p>
               </div>
             </div>
-
+    
             <div class="row schedule-item">
-              <div class="col-md-2"><time><b>29 January</b></time></div>
+              <div class="col-md-2"><time><b>29 January <a href="#" class="register-btn btn btn-danger btn-sm pop-up" style="padding: 2px 5px; font-size: 12px;">Register now</a></b></time></div>
               <div class="col-md-10">
                 <div class="speaker">
                   <img src="img/speakers/mimicry.png" alt="Jack Christiansen">
@@ -473,9 +736,9 @@
                 <p>Laughter guaranteed! Witness participants bring humor to life by mimicking popular figures and characters.</p>
               </div>
             </div>
-
+    
             <div class="row schedule-item">
-              <div class="col-md-2"><time><b>30 January</b></time></div>
+              <div class="col-md-2"><time><b>30 January <a href="#" class="register-btn btn btn-danger btn-sm pop-up" style="padding: 2px 5px; font-size: 12px;">Register now</a></b></time></div>
               <div class="col-md-10">
                 <div class="speaker">
                   <img src="img/speakers/debate.jpeg" alt="Alejandrin Littel">
@@ -484,9 +747,9 @@
                 <p>Engage in thought-provoking discussions as participants argue and defend ideas in Hindi, English, and Sanskrit debates.</p>
               </div>
             </div>
-
+    
             <div class="row schedule-item">
-              <div class="col-md-2"><time><b>31 January</b></time></div>
+              <div class="col-md-2"><time><b>31 January <a href="#" class="register-btn btn btn-danger btn-sm pop-up" style="padding: 2px 5px; font-size: 12px;">Register now</a></b></time></div>
               <div class="col-md-10">
                 <div class="speaker">
                   <img src="img/speakers/music.png" alt="Willow Trantow">
@@ -495,15 +758,15 @@
                 <p>Let music fill the air! Enjoy soulful melodies and electrifying beats across solo, group, folk, and Bollywood performances.</p>
               </div>
             </div>
-
+    
           </div>
-          <!-- End Schdule Day 2 -->
-
-          <!-- Schdule Day 3 -->
-          <div role="tabpanel" class="col-lg-9  tab-pane fade" id="day-3">
-
+          <!-- End Schedule Day 2 -->
+    
+          <!-- Schedule Day 3 -->
+          <div role="tabpanel" class="col-lg-9 tab-pane fade" id="day-3">
+    
             <div class="row schedule-item">
-              <div class="col-md-2"><time><b>1 February</b></time></div>
+              <div class="col-md-2"><time><b>1 February <a href="#" class="register-btn btn btn-danger btn-sm pop-up" style="padding: 2px 5px; font-size: 12px;">Register now</a></b></time></div>
               <div class="col-md-10">
                 <div class="speaker">
                   <img src="img/speakers/drama.png" alt="Hubert Hirthe">
@@ -512,9 +775,9 @@
                 <p>Experience the magic of theater with powerful performances and captivating storytelling on stage.</p>
               </div>
             </div>
-
+    
             <div class="row schedule-item">
-              <div class="col-md-2"><time><b>2 February</b></time></div>
+              <div class="col-md-2"><time><b>2 February <a href="#" class="register-btn btn btn-danger btn-sm pop-up" style="padding: 2px 5px; font-size: 12px;">Register now</a></b></time></div>
               <div class="col-md-10">
                 <div class="speaker">
                   <img src="img/speakers/Treasure Hunt.png" alt="Cole Emmerich">
@@ -523,9 +786,9 @@
                 <p>Adventure awaits! Solve riddles, uncover clues, and race against time in this thrilling treasure hunt.</p>
               </div>
             </div>
-
+    
             <div class="row schedule-item">
-              <div class="col-md-2"><time><b>2 February</b></time></div>
+              <div class="col-md-2"><time><b>2 February <a href="#" class="register-btn btn btn-danger btn-sm pop-up" style="padding: 2px 5px; font-size: 12px;">Register now</a></b></time></div>
               <div class="col-md-10">
                 <div class="speaker">
                   <img src="img/speakers/Slow Cycling.png" alt="Brenden Legros">
@@ -534,9 +797,9 @@
                 <p>Test your patience and balance in this unique cycling event where the slowest wins the race.</p>
               </div>
             </div>
-
+    
             <div class="row schedule-item">
-              <div class="col-md-2"><time><b>4 February</b></time></div>
+              <div class="col-md-2"><time><b>4 February <a href="#" class="register-btn btn btn-danger btn-sm pop-up" style="padding: 2px 5px; font-size: 12px;">Register now</a></b></time></div>
               <div class="col-md-10">
                 <div class="speaker">
                   <img src="img/speakers/monoacting.png" alt="Jack Christiansen">
@@ -545,9 +808,9 @@
                 <p>One stage, one performer, countless emotions! Witness the brilliance of solo acting in this dramatic showcase.</p>
               </div>
             </div>
-
+    
             <div class="row schedule-item">
-              <div class="col-md-2"><time><b>4 February</b></time></div>
+              <div class="col-md-2"><time><b>4 February <a href="#" class="register-btn btn btn-danger btn-sm pop-up" style="padding: 2px 5px; font-size: 12px;">Register now</a></b></time></div>
               <div class="col-md-10">
                 <div class="speaker">
                   <img src="img/speakers/StandUp.png" alt="Alejandrin Littel">
@@ -556,9 +819,9 @@
                 <p>Get ready to laugh out loud as comedians tickle your funny bone with witty jokes and hilarious stories.</p>
               </div>
             </div>
-
+    
             <div class="row schedule-item">
-              <div class="col-md-2"><time><b>4 February</b></time></div>
+              <div class="col-md-2"><time><b>4 February <a href="#" class="register-btn btn btn-danger btn-sm pop-up" style="padding: 2px 5px; font-size: 12px;">Register now</a></b></time></div>
               <div class="col-md-10">
                 <div class="speaker">
                   <img src="img/speakers/mehendi.png" alt="Willow Trantow">
@@ -567,14 +830,14 @@
                 <p>Celebrate tradition and artistry with intricate Mehendi designs and vibrant Rangoli patterns that mesmerize.</p>
               </div>
             </div>
-
+    
           </div>
-          <!-- End Schdule Day 2 -->
-
+          <!-- End Schedule Day 3 -->
+    
         </div>
-
+    
       </div>
-
+    
     </section>
 
     <!--==========================
@@ -711,7 +974,7 @@
 
         <div class="row contact-info">
 
-          <div class="col-md-4">
+          <div class="col-md-6">
             <div class="contact-address">
               <i class="ion-ios-location-outline"></i>
               <h3>Address</h3>
@@ -721,16 +984,9 @@
             </div>
           </div>
 
-          <div class="col-md-4">
-            <div class="contact-phone">
-              <i class="ion-ios-telephone-outline"></i>
-              <h3>Phone Number</h3>
-              <p><a href="tel:+91 9650546261">Click Here</a>
-                
-            </div>
-          </div>
+          
 
-          <div class="col-md-4">
+          <div class="col-md-6">
             <div class="contact-email">
               <i class="ion-ios-email-outline"></i>
               <h3>Email</h3>
@@ -901,7 +1157,100 @@ async function renderNotifications() {
 // Initialize notifications
 renderNotifications();
 
-  </script>
+</script>
+
+<script>
+  var text = document.getElementById('text');
+var newDom = '';
+var animationDelay = 6;
+
+for (let i = 0; i < text.innerText.length; i++) {
+  newDom += '<span class="char">' + (text.innerText[i] == ' ' ? '&nbsp;' : text.innerText[i]) + '</span>';
+}
+
+text.innerHTML = newDom;
+var length = text.children.length;
+
+for (let i = 0; i < length; i++) {
+  text.children[i].style['animation-delay'] = animationDelay * i + 'ms';
+}
+
+</script>
+<script>
+  // TextScramble class (unchanged)
+class TextScramble {
+  constructor(el) {
+    this.el = el;
+    this.chars = "!<>-_\\/[]{}—=+*^?#________";
+    this.update = this.update.bind(this);
+  }
+
+  setText(newText) {
+    const oldText = this.el.innerText;
+    const length = Math.max(oldText.length, newText.length);
+    const promise = new Promise((resolve) => (this.resolve = resolve));
+    this.queue = [];
+    for (let i = 0; i < length; i++) {
+      const from = oldText[i] || "";
+      const to = newText[i] || "";
+      const start = Math.floor(Math.random() * 40);
+      const end = start + Math.floor(Math.random() * 40);
+      this.queue.push({ from, to, start, end });
+    }
+    cancelAnimationFrame(this.frameRequest);
+    this.frame = 0;
+    this.update();
+    return promise;
+  }
+
+  update() {
+    let output = "";
+    let complete = 0;
+    for (let i = 0, n = this.queue.length; i < n; i++) {
+      let { from, to, start, end, char } = this.queue[i];
+      if (this.frame >= end) {
+        complete++;
+        output += to;
+      } else if (this.frame >= start) {
+        if (!char || Math.random() < 0.28) {
+          char = this.randomChar();
+          this.queue[i].char = char;
+        }
+        output += `<span class="dud">${char}</span>`;
+      } else {
+        output += from;
+      }
+    }
+    this.el.innerHTML = output;
+    if (complete === this.queue.length) {
+      this.resolve();
+    } else {
+      this.frameRequest = requestAnimationFrame(this.update);
+      this.frame++;
+    }
+  }
+
+  randomChar() {
+    return this.chars[Math.floor(Math.random() * this.chars.length)];
+  }
+}
+
+// Apply TextScramble effect to the paragraph
+const phrases = ["Click on event image for event detail and sub event", "Download aakanksha brouchure from above for rules and other details", "Explore the events!"];
+const el = document.getElementById("event-details");
+const fx = new TextScramble(el);
+
+let counter = 0;
+const next = () => {
+  fx.setText(phrases[counter]).then(() => {
+    setTimeout(next, 3500); // Adjust delay between phrase changes
+  });
+  counter = (counter + 1) % phrases.length;
+};
+
+next();
+
+</script>
 </body>
 
 </html>
