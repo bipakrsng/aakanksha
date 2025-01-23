@@ -41,6 +41,7 @@
   padding: 15px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   height: 100%; /* Matches the height of the "About The Event" section */
+  width: 100%;
   max-height: 400px; /* Fix the max height to prevent abrupt expansion */
   overflow: hidden; /* Ensure content doesn't spill outside the box */
   display: flex;
@@ -97,7 +98,7 @@
 }
 
 .notification-title a {
-  font-size: 1rem;
+  font-size: 1.5rem;
   font-weight: bold;
   color: #007bff;
   text-decoration: none;
@@ -115,7 +116,7 @@
 
 /* Scrollbar Styling for Better UX */
 .notifications-content::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
 
 .notifications-content::-webkit-scrollbar-thumb {
@@ -150,34 +151,6 @@
   border-radius: 5px;
 }
 
-/* about css */
-#about {
-  background-color: #232323;
-  color: #fff;
-  font-family: Calibri, sans-serif;
-}
-
-#text {
-  font-size: 18px;
-  text-align: justify;
-}
-
-.char {
-  font-size: 18px;
-  animation: an 1s ease-out 1 both;
-  display: inline-block;
-}
-
-@keyframes an {
-  from {
-    opacity: 0;
-    transform: perspective(500px) translate3d(-35px, -40px, -150px) rotate3d(1, -1, 0, 35deg);
-  }
-  to {
-    opacity: 1;
-    transform: perspective(500px) translate3d(0, 0, 0);
-  }
-}
 
 /* aakanksha broucher */
 
@@ -280,10 +253,22 @@
   height: 100vh;
   object-fit: cover;
   opacity: 0.7;
-  z-index: 0;
+  z-index: -1; /* Ensure the background is behind the text */
   position: absolute;
   top: 0;
   left: 0;
+}
+
+/* Add an overlay for better text visibility */
+#intro::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+  z-index: 0; /* Place above the image but below the text */
 }
 
 /* Title animation */
@@ -405,6 +390,15 @@
 }
 
 </style>
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QG47P5F5FJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-QG47P5F5FJ');
+  </script>
 </head>
 
 <body>
@@ -425,13 +419,13 @@
         <ul class="nav-menu">
           <li class="menu-active"><a href="index.html#intro">Home</a></li>
           <li><a href="#about">About</a></li>
-          <li><a href="#speakers">Event Registration</a></li>
+          <li><a href="/registration/">Event Registration</a></li>
           <li><a href="#schedule">Schedule</a></li>
           <li><a href="#venue">Venue</a></li>
           <li><a href="team.html">Team </a></li>
-          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="/gallery/">Gallery</a></li>
           <li><a href="#sponsors">Sponsors</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="/contact/">Contact</a></li>
           <li><a href="https://www.bhu.ac.in/Site/Home/1_2_16_Main-Site">BHU</a></li>
           
         </ul>
@@ -453,18 +447,13 @@
       <p class="mb-4 pb-0">8 February, Banaras Hindu University, Varanasi</p>
       <a href="https://youtu.be/67PHero8nto?si=40sotA3af2_hbK4f" class="venobox play-btn mb-4" data-vbtype="video"
         data-autoplay="true"></a>
-      <a href="#speakers" class="about-btn scrollto">Register NOW</a>
+      <a href="/registration" class="about-btn scrollto">Register NOW</a>
       <!-- <img src="" alt="Background Image"> -->
       
     </div>
   </section>
   
-    <!-- <div id="intro">
-      <video autoplay loop muted>
-        <source src="img\Untitleddesign.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-    </div> -->
+   
   </section>
 
   <main id="main">
@@ -477,7 +466,7 @@
         <div class="row">
           <div class="col-lg-8">
             <h2 id="animated-text">About The Event</h2>
-            <p id="text">
+            <p style="font-size: 18px; text-align: justify;">
               <b>AAKANKSHA</b> is the annual youth festival of the <b>Institute of Science, Banaras Hindu University</b>, and it has been a cherished tradition for years. This vibrant event offers a much-needed break from the routine academic schedule, serving as a dynamic platform for students to showcase their extracurricular talents. Beyond entertainment, <b>AAKANKSHA</b> fosters social connections and encourages the exchange of innovative ideas and perspectives.
               <br><br>
               More than just a fest, <b>AAKANKSHA</b> is a <b>celebration of student aspirations</b>. Coordinated entirely by a dedicated team of undergraduate and postgraduate students from the Institute of Science, this festival truly embodies the spirit of being <i>“Of the Students, By the Students, and For the Students!”</i>
@@ -604,13 +593,13 @@
     
         <ul class="nav nav-tabs" role="tablist">
           <li class="nav-item">
-            <a class="nav-link active" href="#day-1" role="tab" data-toggle="tab">Phase 1</a>
+            <a class="nav-link active" href="#day-1" role="tab" data-toggle="tab">20-24 Jan </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#day-2" role="tab" data-toggle="tab">Phase 2</a>
+            <a class="nav-link" href="#day-2" role="tab" data-toggle="tab">25-31 Jan</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#day-3" role="tab" data-toggle="tab">Phase 3</a>
+            <a class="nav-link" href="#day-3" role="tab" data-toggle="tab">1-4 Feb</a>
           </li>
         </ul>
     
@@ -622,7 +611,7 @@
           <div role="tabpanel" class="col-lg-9 tab-pane fade show active" id="day-1">
     
             <div class="row schedule-item">
-              <div class="col-md-2"><time> <b>20 January <a href="https://forms.gle/Y62Poqqs2GdJTswb8" class="register-btn btn btn-danger btn-sm pop-up" style="padding: 2px 5px; font-size: 12px;">Register now</a></b></time></div>
+              <div class="col-md-2"><time> <b>20 January <a href="https://forms.gle/Y62Poqqs2GdJTswb8" class="register-btn btn btn-danger btn-sm pop-up" style="padding: 2px 5px; font-size: 12px;">Closed</a></b></time></div>
               <div class="col-md-10">
                 <div class="speaker">
                   <img src="img/speakers/essay.png" alt="Brenden Legros">
@@ -633,7 +622,7 @@
             </div>
     
             <div class="row schedule-item">
-              <div class="col-md-2"><time><b>21 January <a href="https://forms.gle/nDuHtxf3U7iUHWqZ6" class="register-btn btn btn-danger btn-sm pop-up" style="padding: 2px 5px; font-size: 12px;">Register now</a></b></time></div>
+              <div class="col-md-2"><time><b>21 January <a href="https://forms.gle/nDuHtxf3U7iUHWqZ6" class="register-btn btn btn-danger btn-sm pop-up" style="padding: 2px 5px; font-size: 12px;">Closed</a></b></time></div>
               <div class="col-md-10">
                 <div class="speaker">
                   <img src="img/speakers/On the Sport Painting.png" alt="On the Spot Painting">
@@ -644,7 +633,7 @@
             </div>
     
             <div class="row schedule-item">
-              <div class="col-md-2"><time><b>21 January <a href="https://forms.gle/nDuHtxf3U7iUHWqZ6" class="register-btn btn btn-danger btn-sm pop-up" style="padding: 2px 5px; font-size: 12px;">Register now</a></b></time></div>
+              <div class="col-md-2"><time><b>21 January <a href="https://forms.gle/nDuHtxf3U7iUHWqZ6" class="register-btn btn btn-danger btn-sm pop-up" style="padding: 2px 5px; font-size: 12px;">Closed</a></b></time></div>
               <div class="col-md-10">
                 <div class="speaker">
                   <img src="img/speakers/sketching.png" alt="Sketching">
@@ -655,7 +644,7 @@
             </div>
     
             <div class="row schedule-item">
-              <div class="col-md-2"><time><b>22 January <a href="https://forms.gle/NkAmgJ8etqrdyand8" class="register-btn btn btn-danger btn-sm pop-up" style="padding: 2px 5px; font-size: 12px;">Register now</a></b></time></div>
+              <div class="col-md-2"><time><b>22 January <a href="https://forms.gle/NkAmgJ8etqrdyand8" class="register-btn btn btn-danger btn-sm pop-up" style="padding: 2px 5px; font-size: 12px;">Closed</a></b></time></div>
               <div class="col-md-10">
                 <div class="speaker">
                   <img src="img/speakers/elocution.png" alt="Elocution">
@@ -666,7 +655,7 @@
             </div>
     
             <div class="row schedule-item">
-              <div class="col-md-2"><time><b>23 January <a href="https://forms.gle/39THNNtTojNQKdct6" class="register-btn btn btn-danger btn-sm pop-up" style="padding: 2px 5px; font-size: 12px;">Register now</a></b></time></div>
+              <div class="col-md-2"><time><b>23 January <a href="https://forms.gle/39THNNtTojNQKdct6" class="register-btn btn btn-danger btn-sm pop-up" style="padding: 2px 5px; font-size: 12px;">Closed</a></b></time></div>
               <div class="col-md-10">
                 <div class="speaker">
                   <img src="img/speakers/instrument.png" alt="Alejandrin Littel">
@@ -677,7 +666,7 @@
             </div>
     
             <div class="row schedule-item">
-              <div class="col-md-2"><time><b>24 January <a href="https://docs.google.com/forms/d/e/1FAIpQLSewvaGCpaYrWA2WaQSaLgacj38G3MtOLY_rZ1Gbqyg1rWBziw/viewform" class="register-btn btn btn-danger btn-sm pop-up" style="padding: 2px 5px; font-size: 12px;">Register now</a></b></time></div>
+              <div class="col-md-2"><time><b>24 January <a href="https://docs.google.com/forms/d/e/1FAIpQLSewvaGCpaYrWA2WaQSaLgacj38G3MtOLY_rZ1Gbqyg1rWBziw/viewform" class="register-btn btn btn-danger btn-sm pop-up" style="padding: 2px 5px; font-size: 12px;">Closed</a></b></time></div>
               <div class="col-md-10">
                 <div class="speaker">
                   <img src="img/speakers/Short Story Writing.png" alt="Willow Trantow">
@@ -694,7 +683,7 @@
           <div role="tabpanel" class="col-lg-9 tab-pane fade" id="day-2">
     
             <div class="row schedule-item">
-              <div class="col-md-2"><time><b>25 January <a href="https://docs.google.com/forms/d/e/1FAIpQLScaafrxAg7MxWSO6ekm0ZkF-OsRbGBw9svtqOkkhtlniBqY9w/viewform" class="register-btn btn btn-danger btn-sm pop-up" style="padding: 2px 5px; font-size: 12px;">Register now</a></b></time></div>
+              <div class="col-md-2"><time><b>25 January <a href="https://docs.google.com/forms/d/e/1FAIpQLScaafrxAg7MxWSO6ekm0ZkF-OsRbGBw9svtqOkkhtlniBqY9w/viewform" class="register-btn btn btn-danger btn-sm pop-up" style="padding: 2px 5px; font-size: 12px;">Closed</a></b></time></div>
               <div class="col-md-10">
                 <div class="speaker">
                   <img src="img/speakers/poetry.png" alt="Brenden Legros">
@@ -727,7 +716,7 @@
             </div>
     
             <div class="row schedule-item">
-              <div class="col-md-2"><time><b>29 January <a href="#" class="register-btn btn btn-danger btn-sm pop-up" style="padding: 2px 5px; font-size: 12px;">Register now</a></b></time></div>
+              <div class="col-md-2"><time><b>29 January <a href="https://docs.google.com/forms/d/e/1FAIpQLSdCSdPARTKauhD7o4mdvezy35dIW6TVL989uoOT1B25gMjXig/viewform?usp=sharing" class="register-btn btn btn-danger btn-sm pop-up" style="padding: 2px 5px; font-size: 12px;">Register now</a></b></time></div>
               <div class="col-md-10">
                 <div class="speaker">
                   <img src="img/speakers/mimicry.png" alt="Jack Christiansen">
@@ -738,7 +727,7 @@
             </div>
     
             <div class="row schedule-item">
-              <div class="col-md-2"><time><b>30 January <a href="#" class="register-btn btn btn-danger btn-sm pop-up" style="padding: 2px 5px; font-size: 12px;">Register now</a></b></time></div>
+              <div class="col-md-2"><time><b>30 January <a href="https://docs.google.com/forms/d/e/1FAIpQLSeSqSX02AOKbSXfI5UpMrljiWDbjg-l5-uVok5_kl7IwAE6dg/viewform?usp=sharing" class="register-btn btn btn-danger btn-sm pop-up" style="padding: 2px 5px; font-size: 12px;">Register now</a></b></time></div>
               <div class="col-md-10">
                 <div class="speaker">
                   <img src="img/speakers/debate.jpeg" alt="Alejandrin Littel">
@@ -749,7 +738,7 @@
             </div>
     
             <div class="row schedule-item">
-              <div class="col-md-2"><time><b>31 January <a href="#" class="register-btn btn btn-danger btn-sm pop-up" style="padding: 2px 5px; font-size: 12px;">Register now</a></b></time></div>
+              <div class="col-md-2"><time><b>31 January <a href="https://docs.google.com/forms/d/e/1FAIpQLSfFzHwfv70r6Ri3ZcnVEGiDTenr24pShr3QZxyQUQAPanzKiQ/viewform?usp=sharing" class="register-btn btn btn-danger btn-sm pop-up" style="padding: 2px 5px; font-size: 12px;">Register now</a></b></time></div>
               <div class="col-md-10">
                 <div class="speaker">
                   <img src="img/speakers/music.png" alt="Willow Trantow">
@@ -766,7 +755,7 @@
           <div role="tabpanel" class="col-lg-9 tab-pane fade" id="day-3">
     
             <div class="row schedule-item">
-              <div class="col-md-2"><time><b>1 February <a href="#" class="register-btn btn btn-danger btn-sm pop-up" style="padding: 2px 5px; font-size: 12px;">Register now</a></b></time></div>
+              <div class="col-md-2"><time><b>1 February <a href="https://docs.google.com/forms/d/e/1FAIpQLScQu93DJxs13skiKTzuao1Ges6DACwIhtIViIt5WtB9A612UA/viewform?usp=sharing" class="register-btn btn btn-danger btn-sm pop-up" style="padding: 2px 5px; font-size: 12px;">Register now</a></b></time></div>
               <div class="col-md-10">
                 <div class="speaker">
                   <img src="img/speakers/drama.png" alt="Hubert Hirthe">
@@ -777,7 +766,7 @@
             </div>
     
             <div class="row schedule-item">
-              <div class="col-md-2"><time><b>2 February <a href="#" class="register-btn btn btn-danger btn-sm pop-up" style="padding: 2px 5px; font-size: 12px;">Register now</a></b></time></div>
+              <div class="col-md-2"><time><b>2 February <a href="https://docs.google.com/forms/d/e/1FAIpQLSdQDMbuJEZWHxh-i5ZGHuUQVy5gPmYw3MA3xqZZmI3sK4d22Q/viewform?usp=sharing" class="register-btn btn btn-danger btn-sm pop-up" style="padding: 2px 5px; font-size: 12px;">Register now</a></b></time></div>
               <div class="col-md-10">
                 <div class="speaker">
                   <img src="img/speakers/Treasure Hunt.png" alt="Cole Emmerich">
@@ -799,7 +788,7 @@
             </div>
     
             <div class="row schedule-item">
-              <div class="col-md-2"><time><b>4 February <a href="#" class="register-btn btn btn-danger btn-sm pop-up" style="padding: 2px 5px; font-size: 12px;">Register now</a></b></time></div>
+              <div class="col-md-2"><time><b>4 February <a href="https://docs.google.com/forms/d/e/1FAIpQLSdCSdPARTKauhD7o4mdvezy35dIW6TVL989uoOT1B25gMjXig/viewform?usp=sharing" class="register-btn btn btn-danger btn-sm pop-up" style="padding: 2px 5px; font-size: 12px;">Register now</a></b></time></div>
               <div class="col-md-10">
                 <div class="speaker">
                   <img src="img/speakers/monoacting.png" alt="Jack Christiansen">
@@ -810,7 +799,7 @@
             </div>
     
             <div class="row schedule-item">
-              <div class="col-md-2"><time><b>4 February <a href="#" class="register-btn btn btn-danger btn-sm pop-up" style="padding: 2px 5px; font-size: 12px;">Register now</a></b></time></div>
+              <div class="col-md-2"><time><b>4 February <a href="https://docs.google.com/forms/d/e/1FAIpQLScv5zxRBg4_N3bqLKRofR9UG4qpQVXucID67bLsvA8gdEJ8BQ/viewform?usp=sharing" class="register-btn btn btn-danger btn-sm pop-up" style="padding: 2px 5px; font-size: 12px;">Register now</a></b></time></div>
               <div class="col-md-10">
                 <div class="speaker">
                   <img src="img/speakers/StandUp.png" alt="Alejandrin Littel">
@@ -821,7 +810,7 @@
             </div>
     
             <div class="row schedule-item">
-              <div class="col-md-2"><time><b>4 February <a href="#" class="register-btn btn btn-danger btn-sm pop-up" style="padding: 2px 5px; font-size: 12px;">Register now</a></b></time></div>
+              <div class="col-md-2"><time><b>4 February <a href="https://docs.google.com/forms/d/e/1FAIpQLSfDwhw2_bpgKftNaa4oKnIXBXOshGF8S9Nc88zFzwMZKv_1kA/viewform?usp=sharing" class="register-btn btn btn-danger btn-sm pop-up" style="padding: 2px 5px; font-size: 12px;">Register now</a></b></time></div>
               <div class="col-md-10">
                 <div class="speaker">
                   <img src="img/speakers/mehendi.png" alt="Willow Trantow">
@@ -908,49 +897,49 @@
 
           <div class="col-lg-3 col-md-4 col-xs-6">
             <div class="sponsor-logo">
-              <img src="img/sponsors/2.jpg" class="img-fluid" alt="">
+              <img src="img/sponsors/hdfc-bank.jpg" class="img-fluid" alt="">
             </div>
           </div>
           
           <div class="col-lg-3 col-md-4 col-xs-6">
             <div class="sponsor-logo">
-              <img src="img/sponsors/2.jpg" class="img-fluid" alt="">
+              <img src="img/sponsors/ims.jpg" class="img-fluid" alt="">
             </div>
           </div>
         
           <div class="col-lg-3 col-md-4 col-xs-6">
             <div class="sponsor-logo">
-              <img src="img/sponsors/2.jpg" class="img-fluid" alt="">
+              <img src="img/sponsors/genecare-biotech.jpg" class="img-fluid" alt="">
             </div>
           </div>
           
           <div class="col-lg-3 col-md-4 col-xs-6">
             <div class="sponsor-logo">
-              <img src="img/sponsors/2.jpg" class="img-fluid" alt="">
+              <img src="img/sponsors/g2p.jpg" class="img-fluid" alt="">
             </div>
           </div>
           
           <div class="col-lg-3 col-md-4 col-xs-6">
             <div class="sponsor-logo">
-              <img src="img/sponsors/2.jpg" class="img-fluid" alt="">
+              <img src="img/sponsors/edufocus.jpg" class="img-fluid" alt="">
             </div>
           </div>
         
           <div class="col-lg-3 col-md-4 col-xs-6">
             <div class="sponsor-logo">
-              <img src="img/sponsors/2.jpg" class="img-fluid" alt="">
+              <img src="#" class="img-fluid" alt="">
             </div>
           </div>
           
           <div class="col-lg-3 col-md-4 col-xs-6">
             <div class="sponsor-logo">
-              <img src="img/sponsors/2.jpg" class="img-fluid" alt="">
+              <img src="#" class="img-fluid" alt="">
             </div>
           </div>
           
           <div class="col-lg-3 col-md-4 col-xs-6">
             <div class="sponsor-logo">
-              <img src="img/sponsors/2.jpg" class="img-fluid" alt="">
+              <img src="#" class="img-fluid" alt="">
             </div>
           </div>
 
@@ -963,69 +952,7 @@
     <!--==========================
       Contact Section
     ============================-->
-    <section id="contact" class="section-bg wow fadeInUp">
-
-      <div class="container">
-
-        <div class="section-header">
-          <h2>Contact Us</h2>
-          <p>"Get in Touch – We're Here to Help!"</p>
-        </div>
-
-        <div class="row contact-info">
-
-          <div class="col-md-6">
-            <div class="contact-address">
-              <i class="ion-ios-location-outline"></i>
-              <h3>Address</h3>
-              <address>Institute of Science <br>
-                Banaras Hindu University<br>
-                Varanasi <br></address>
-            </div>
-          </div>
-
-          
-
-          <div class="col-md-6">
-            <div class="contact-email">
-              <i class="ion-ios-email-outline"></i>
-              <h3>Email</h3>
-              <p><a href="mailto:studentadvisor.isc@bhu.ac.in">Student Advisor</a></p>
-              
-            </div>
-          </div>
-
-        </div>
-
-        <div class="form">
-          <div id="sendmessage">Your message has been sent. Thank you!</div>
-          <div id="errormessage"></div>
-          <form action="" method="post" role="form" class="contactForm">
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                <div class="validation"></div>
-              </div>
-              <div class="form-group col-md-6">
-                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
-                <div class="validation"></div>
-              </div>
-            </div>
-            <div class="form-group">
-              <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
-              <div class="validation"></div>
-            </div>
-            <div class="form-group">
-              <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
-              <div class="validation"></div>
-            </div>
-            <div class="text-center"><button type="submit">Send Message</button></div>
-          </form>
-        </div>
-
-      </div>
-    </section><!-- #contact -->
-
+    
   </main>
 
 
@@ -1251,6 +1178,27 @@ const next = () => {
 next();
 
 </script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const registerButtons = document.querySelectorAll(".register-btn");
+    registerButtons.forEach(button => {
+      const href = button.getAttribute("href");
+      if (!href || href === "#") {
+        button.style.display = "none";
+
+        // Create a new span element with "Opening Soon" text
+        const openingSoonText = document.createElement("span");
+        openingSoonText.textContent = "On the Spot Registration";
+        openingSoonText.style.color = "red"; // Optional styling
+        openingSoonText.style.fontWeight = "bold"; // Optional styling
+        
+        // Insert the span after the button
+        button.parentElement.insertBefore(openingSoonText, button.nextSibling);
+      }
+    });
+  });
+</script>
+
 </body>
 
 </html>

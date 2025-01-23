@@ -657,7 +657,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 --------------------------------------------------------------*/
 
 #about {
-  background: url("../img/about-bg.jpg");
+  background: url("../img/about/image.png");
   background-size: cover;
   overflow: hidden;
   position: relative;
@@ -910,7 +910,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 #venue .venue-info {
-  background: url("../img/venue-info-bg.jpg") top center no-repeat;
+  background: url("../img/venue-gallery/image.png") top center no-repeat;
   background-size: cover;
   position: relative;
   padding-top: 60px;
@@ -961,61 +961,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 # Hotels Section
 --------------------------------------------------------------*/
 
-#hotels {
-  padding: 60px 0;
-}
 
-#hotels .hotel {
-  border: 1px solid #e0e5fa;
-  background: #fff;
-  margin-bottom: 30px;
-}
-
-#hotels .hotel:hover .hotel-img img {
-  -webkit-transform: scale(1.1);
-  transform: scale(1.1);
-}
-
-#hotels .hotel-img {
-  overflow: hidden;
-  margin-bottom: 15px;
-}
-
-#hotels .hotel-img img {
-  transition: 0.3s ease-in-out;
-}
-
-#hotels h3 {
-  font-weight: 600;
-  font-size: 20px;
-  margin-bottom: 5px;
-  padding: 0 20px;
-}
-
-#hotels a {
-  color: #152b79;
-}
-
-#hotels a:hover {
-  color: #f82249;
-}
-
-#hotels .stars {
-  padding: 0 20px;
-  margin-bottom: 5px;
-}
-
-#hotels .stars i {
-  color: #ffc31d;
-}
-
-#hotels p {
-  padding: 0 20px;
-  margin-bottom: 20px;
-  color: #060c22;
-  font-style: italic;
-  font-size: 15px;
-}
 
 /*--------------------------------------------------------------
 # Gallery Section
@@ -1066,33 +1012,28 @@ body.mobile-nav-active #mobile-nav-toggle {
 /*--------------------------------------------------------------
 # Sponsors Section
 --------------------------------------------------------------*/
-
 #sponsors {
   padding: 60px 0;
 }
 
 #sponsors .sponsors-wrap {
-  border-top: 1px solid #e0e5fa;
-  border-left: 1px solid #e0e5fa;
+  display: grid; /* Use CSS Grid for layout */
+  grid-template-columns: repeat(4, 1fr); /* Default: 4 cards per row for larger screens */
+  gap: 20px; /* Add spacing between cards */
   margin-bottom: 30px;
 }
 
 #sponsors .sponsor-logo {
-  padding: 30px;
-  display: -webkit-box;
-  display: -ms-flexbox;
+  padding: 40px; /* Increased padding for enlarged card space */
   display: flex;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
   justify-content: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  border-right: 1px solid #e0e5fa;
-  border-bottom: 1px solid #e0e5fa;
   overflow: hidden;
-  background: rgba(255, 255, 255, 0.5);
-  height: 160px;
+  background: rgba(255, 255, 255, 0.5); /* Subtle background color */
+  height: 200px; /* Larger height for the card */
+  width: 250px;
+  border-radius: 10px; /* Rounded corners for better design */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a shadow for a clean card look */
 }
 
 #sponsors .sponsor-logo:hover img {
@@ -1102,7 +1043,31 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 #sponsors img {
   transition: all 0.4s ease-in-out;
+  max-width: 100%; /* Ensure images stay responsive */
+  height: auto; /* Maintain image aspect ratio */
 }
+
+/* Media query for medium screens (laptops and tablets) */
+@media (max-width: 1024px) {
+  #sponsors .sponsors-wrap {
+    grid-template-columns: repeat(3, 1fr); /* 3 cards per row */
+  }
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+  #sponsors .sponsors-wrap {
+    grid-template-columns: repeat(2, 1fr); /* 2 cards per row */
+  }
+}
+
+/* Media query for very small screens (mobile phones) */
+@media (max-width: 480px) {
+  #sponsors .sponsors-wrap {
+    grid-template-columns: 1fr; /* 1 card per row */
+  }
+}
+
 
 /*--------------------------------------------------------------
 # F.A.Q Section
