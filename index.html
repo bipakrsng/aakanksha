@@ -167,11 +167,12 @@
 .animated-container {
   display: inline-flex; /* Keep "AAKANKSHA" and "BROCHURE" inline */
   align-items: center;
-  gap: 2px; /* Reduced space between "AAKANKSHA" and "BROCHURE" */
   font-weight: bold;
   font-size: 2rem;
   overflow: hidden; /* Preserve animations */
   white-space: nowrap;
+  padding: 0; /* Remove padding */
+  margin: 0; /* Remove margin */
 }
 
 /* AAKANKSHA text styling */
@@ -179,18 +180,19 @@
   color: #670d05; /* Different color for AAKANKSHA */
   animation: showup 7s infinite;
   margin: 0; /* Ensure no extra margin */
+  padding: 0; /* Ensure no extra padding */
 }
 
 /* BROCHURE text styling */
 .brochure {
   color: #2b7a78; /* Different color for BROCHURE */
-  width: 0px; /* Initial width for animation */
+  width: 0; /* Initial width for animation */
   animation: reveal 7s infinite;
-  margin: 0; /* Ensure no extra margin */
+  margin-left: 8px; /* Consistent small gap */
+  padding: 0; /* Ensure no extra padding */
 }
 
 .brochure span {
-  margin-left: -200px; /* Reduced sliding offset for smoother animation */
   animation: slidein 7s infinite;
 }
 
@@ -203,38 +205,31 @@
 }
 
 @keyframes slidein {
-  0% { margin-left: -400px; } /* Reduced sliding distance */
-  20% { margin-left: -400px; }
-  35% { margin-left: 0px; }
-  100% { margin-left: 0px; }
+  0% { transform: translateX(-100%); } /* Start off-screen */
+  20% { transform: translateX(-100%); }
+  35% { transform: translateX(0); } /* Slide into view */
+  100% { transform: translateX(0); }
 }
 
 @keyframes reveal {
-  0% { opacity: 0; width: 0px; }
-  20% { opacity: 1; width: 0px; }
-  30% { width: 200px; } /* Adjusted width for smoother animation */
+  0% { opacity: 0; width: 0; }
+  20% { opacity: 1; width: 0; }
+  30% { width: 200px; } /* Fixed width for smoother animation */
   80% { opacity: 1; }
   100% { opacity: 0; width: 200px; }
 }
 
-/* Styling for the AAKANKSHA BROCHURE link */
-.brochure-link {
-  font-size: 1.5rem;
-  margin-top: 15px;
-  text-align: center;
-}
-
-.brochure-link a {
-  text-decoration: none;
-  color: #000; /* Black for link text */
-  font-weight: bold;
-}
-
-.highlighted-pop-up {
-  color: #444; /* Neutral color for additional text */
-  font-size: 18px;
-  margin-top: 10px;
-  letter-spacing: 0.2px;
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+  .animated-container {
+    font-size: 1.5rem; /* Reduce font size */
+  }
+  .brochure {
+    margin-left: 4px; /* Reduce gap on smaller screens */
+  }
+  @keyframes reveal {
+    30% { width: 150px; } /* Adjust width for smaller screens */
+  }
 }
 
 /* intro css */
